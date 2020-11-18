@@ -1,6 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { CONFIG } from './config';
+import { fetchCards } from './Api';
+
+fetchCards(CONFIG.CARDS_ENDPOINT).then(cards => {
+  console.log(cards);
+});
 
 function App() {
   return (
