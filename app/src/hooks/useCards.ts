@@ -1,10 +1,30 @@
 import { useState } from "react";
 import { CardProps } from "../components/Card";
 import { CONFIG } from "../config";
+import { Schema, Validator } from 'jsonschema';
 
 export enum CardsStatus { READY, FETCHING, ERROR, IDLE };
 
-// TODO: Validate the schema
+const cardSchema: Schema = {
+    type: 'object',
+    properties: {
+        arrhythmias: {
+            type: 'array',
+            items: { type: 'string' }
+        },
+        created_date: { type: 'string' },
+        id: { type: 'number' },
+        patient_name: { type: 'string' },
+        status: { type: 'string' }
+    },
+    required: ['arrhythmias', 'created_date', 'id', 'patient_name', 'status']
+};
+
+const cardArraySchema: Schema = {
+    type: 'array',
+    items: cardSchema
+};
+
 /**
  * helper function to fetch cards
  * this could easily be generalised to fetch any json data
@@ -21,7 +41,17 @@ const fetchCards = async (endpointUri: string): Promise<CardProps[]> => {
             // everything is fine
             if (res.status === 200) {
                 const cards = await res.json();
-                resolve(cards);
+                const validationCheck = new Validator().validate(cards, cardArraySchema);
+
+                // validate the response
+                if (validationCheck.valid) {
+                    resolve(cards);
+                } else {
+                    reject(
+                        'invalid schema: ' +
+                        validationCheck.errors.map(e => e.message).join('\n')
+                    );
+                }
             } else {
                 reject(`An error occured : status code ${res.status}`);
             }

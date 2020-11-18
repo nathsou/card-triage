@@ -2,6 +2,10 @@ import React, { useCallback, useState } from 'react';
 import { Columns } from './components/Columns';
 import { FilterBar } from './components/FilterBar';
 import './styles/content.css';
+import { faLongArrowAltRight, faLongArrowAltLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+library.add(faLongArrowAltRight, faLongArrowAltLeft, faSearch);
 
 const App = () => {
   const [filter, setFilter] = useState('');

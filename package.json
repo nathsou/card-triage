@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "api": "node ./server/index.js"
+    "test": "cd app && npm run test",
+    "api": "node ./server/index.js",
+    "start": "cd app && npm run start",
+    "postinstall": "cd app && npm install"
   },
-  "author": "",
+  "author": "Nathan Soufflet",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
