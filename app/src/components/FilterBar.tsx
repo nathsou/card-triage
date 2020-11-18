@@ -20,7 +20,7 @@ export const FilterBar = ({ input, onUpdate }: FilterBarProps) => {
         <input
             ref={inputRef}
             type='text'
-            placeholder='Filter by name'
+            placeholder='Filter'
             className='filter-bar'
             value={input}
             onKeyPress={update}
