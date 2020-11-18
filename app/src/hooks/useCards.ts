@@ -48,9 +48,9 @@ export const useCards = (): { cards: CardProps[], status: CardsStatus } => {
         setStatus(CardsStatus.FETCHING);
 
         fetchCards(CONFIG.CARDS_ENDPOINT).then(fetchedCards => {
-            // sort the cards by ascending creation date
+            // sort the cards by descending creation date
             setCards(fetchedCards.sort((c1, c2) =>
-                new Date(c1.created_date).getTime() - new Date(c2.created_date).getTime())
+                new Date(c2.created_date).getTime() - new Date(c1.created_date).getTime())
             );
             setStatus(CardsStatus.READY);
         }).catch(error => {

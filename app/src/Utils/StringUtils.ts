@@ -10,3 +10,7 @@ export const formatDate = (dateString: string): string => {
     // is the hour/minute relevant in this case?
     return `${day}-${month}-${year}`;
 };
+
+export const camelCasify = (str: string): string => {
+    return `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
+};

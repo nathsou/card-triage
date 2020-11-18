@@ -2,16 +2,53 @@
 .card {
     border: 3px solid black;
     border-radius: 0px;
-    padding: 5px;
-    margin: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
     background-color: #fcfcfc;
     min-width: 350px;
+    position: relative;
+}
+
+/* card fold */
+.card::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -11px;
+    transform: rotate(45deg);
+    top: -11px;
+    height: 20px;
+    width: 17px;
+    background: white;
+    border-right: 3px black solid;
+    z-index: 3;
+}
+
+.card::after {
+    content: "";
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    display: block;
+    background: white;
+    top: -3px;
+    left: -3px;
+    border: 3px solid black;
+    z-index: 2;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .card-list {
-    border: 1px solid lightgrey;
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
 }
 
 .columns-container {

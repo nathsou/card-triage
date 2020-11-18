@@ -6,7 +6,6 @@ import partition from 'lodash/partition';
 
 const App = () => {
   const { cards, status: cardsStatus } = useCards();
-  console.log(cards);
 
   const [todo, setTodo] = useState<CardProps[]>([]);
   const [done, setDone] = useState<CardProps[]>([]);
@@ -19,9 +18,25 @@ const App = () => {
     setCardsSorted(true);
   }
 
+  // TODO: useMemo
+  const onCardStatusChanged = (cardId: number) => {
+    console.log(cardId);
+  };
+
   return <div className='columns-container'>
-    <CardList key='todo' cards={todo} header='Todo'/>
-    <CardList key='done' cards={done} header='Done'/>
+    <CardList
+      key='todo'
+      cards={todo}
+      header='Todo'
+      onCardStatusChanged={onCardStatusChanged}
+    />
+
+    <CardList
+      key='done'
+      cards={done}
+      header='Done'
+      onCardStatusChanged={onCardStatusChanged}
+    />
   </div>;
 };
 
