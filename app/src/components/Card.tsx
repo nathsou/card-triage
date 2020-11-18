@@ -1,4 +1,7 @@
 import React from 'react';
+import '../styles/card.css';
+import { formatDate } from '../Utils/DateUtils';
+import { TagList } from './TagList';
 
 export type Arrythmias = 'AFib' | 'AV Block' | 'Pause' | 'PSVC' | 'PVC';
 export type Status = 'PENDING' | 'REJECTED' | 'DONE';
@@ -11,12 +14,17 @@ export interface CardProps {
     status: Status
 };
 
+// const statusColorMap: { [key in Status]: string } = {
+//     'PENDING': 
+// };
+
 export const Card = (props: CardProps) => {
-    return <div key={props.id}>
+    return <div key={props.id} className='card'>
+        <h2>{props.patient_name}</h2>
+        <TagList tags={props.arrhythmias}/>
+        <b>{formatDate(props.created_date)}</b>
+
         <ul>
-            <li>Arrhythmias: {props.arrhythmias.join(', ')}</li>
-            <li>Created date: {props.created_date}</li>
-            <li>Name: {props.patient_name}</li>
             <li>Status: {props.status}</li>
         </ul>
     </div>;

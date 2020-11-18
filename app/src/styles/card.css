@@ -1,0 +1,33 @@
+
+.card {
+    border: 3px solid black;
+    border-radius: 0px;
+    padding: 5px;
+    margin: 10px;
+    background-color: #fcfcfc;
+    min-width: 350px;
+}
+
+.card-list {
+    border: 1px solid lightgrey;
+    display: flex;
+    flex-direction: column;
+}
+
+.columns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tag {
+    border: 2px solid black;
+    padding: 3px;
+    margin: 3px;
+    font-weight: bold;
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: row;
+}
