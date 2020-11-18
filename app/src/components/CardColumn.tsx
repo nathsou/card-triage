@@ -5,7 +5,7 @@ export interface ColumnProps {
     cards: CardProps[]
 };
 
-export const Column = (props: ColumnProps) => {
+export const CardColumn = (props: ColumnProps) => {
     return <div>
         {props.cards.map(card => <Card {...card}/>)}
     </div>;

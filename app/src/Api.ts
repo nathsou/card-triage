@@ -1,6 +1,7 @@
 
 import { CardProps } from "./components/Card";
 
+// TODO: Validate the schema
 // helper function to fetch cards
 // this could easily be generalised to fetch any json data
 export const fetchCards = async (endpointUri: string): Promise<CardProps[]> => {
