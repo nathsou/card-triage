@@ -1,0 +1,19 @@
+.filter-box {
+    margin: 10px 25px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.filter-bar {
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 0px;
+    min-height: 25px;
+    min-width: 180px;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 3px;
+    padding-left: 10px;
+}

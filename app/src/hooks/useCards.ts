@@ -48,10 +48,12 @@ export const useCards = (): { cards: CardProps[], status: CardsStatus } => {
         setStatus(CardsStatus.FETCHING);
 
         fetchCards(CONFIG.CARDS_ENDPOINT).then(fetchedCards => {
-            // sort the cards by descending creation date
+            // display the pending cards first
+            // this could be done in O(n) time instead of O(nlog(n))
             setCards(fetchedCards.sort((c1, c2) =>
-                new Date(c2.created_date).getTime() - new Date(c1.created_date).getTime())
-            );
+                (c1.status === 'PENDING' ? 0 : 1) - (c2.status === 'PENDING' ? 0 : 1)
+            ));
+
             setStatus(CardsStatus.READY);
         }).catch(error => {
             // TODO: Handle errors (display a message to the user)

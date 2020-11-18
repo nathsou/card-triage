@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../styles/card.css';
 import { formatDate } from '../Utils/StringUtils';
 import { StatusTag } from './StatusTag';
@@ -17,11 +17,30 @@ export interface CardProps {
 };
 
 export const Card = (props: CardProps) => {
+    const [hovered, setHovered] = React.useState(false);
+
+    const onHover = useCallback(() => {
+        setHovered(true);
+    }, [setHovered]);
+
+    const onNotHovered = useCallback(() => {
+        setHovered(false);
+    }, [setHovered]);
+
     return (
-        <div key={props.id} className='card'>
+        <div
+            key={props.id}
+            className='card'
+            onMouseOver={onHover}
+            onMouseLeave={onNotHovered}
+        >
             <div className='card-header'>
                 <h2 style={{margin: '0'}}>{props.patient_name}</h2>
-                <StatusTag status={props.status}/>
+                <StatusTag
+                    status={props.status}
+                    onClick={props.onStatusChanged}
+                    displayArrow={hovered}
+                />
             </div>
 
             <p style={{color: '#525252'}}>Created on {formatDate(props.created_date)}</p>

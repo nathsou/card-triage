@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { camelCasify } from '../Utils/StringUtils';
 import { Status } from "./Card";
@@ -8,22 +9,50 @@ const statusColorMap: { [key in Status]: string } = {
     'DONE': '#218c74'
 };
 
-export const StatusTag = ({ status }: {status: Status}) => {
-    const intentColor = statusColorMap[status];
+export interface StatusTagProps {
+    status: Status,
+    onClick: () => void
+    displayArrow: boolean
+};
+
+export const StatusTag = ({ status, onClick, displayArrow }: StatusTagProps) => {
+    const intentColor = displayArrow ?
+        statusColorMap[status === 'DONE' ? 'REJECTED' : 'DONE'] :
+        statusColorMap[status];
+
+    const body = displayArrow ? (status === 'DONE' ? 
+            (<div>
+                {
+                    displayArrow &&
+                    <FontAwesomeIcon
+                        style={{marginRight: '5px'}}
+                        icon='long-arrow-alt-left'
+                    />
+                }
+                Reject
+            </div>) :
+            (<div>
+                Accept
+                {
+                    displayArrow &&
+                    <FontAwesomeIcon
+                        style={{marginLeft: '5px'}}
+                        icon='long-arrow-alt-right'
+                    />
+                }
+            </div>)
+     ) : camelCasify(status);
 
     return (
         <div
+            className='status-tag'
             style={{
-                border: `2px solid ${intentColor}`,
-                borderRadius: '3px',
-                width: 'max-content',
-                padding: '2px 5px',
+                borderColor: intentColor,
                 backgroundColor: intentColor,
-                color: 'white',
-                fontWeight: 'bold'
             }}
+            onClick={onClick}
         >
-            {camelCasify(status)}
+            {body}
         </div>
     );
 };
