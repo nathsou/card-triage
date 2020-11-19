@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFilteredCards } from "../hooks/useFilteredCards";
+import { useSortedCards } from "../hooks/useSortedCards";
 import { CardList } from "./CardList";
 
 export interface ColumnsProps {
@@ -7,7 +7,7 @@ export interface ColumnsProps {
 };
 
 export const Columns = ({ filter }: ColumnsProps) => {
-    const { done, todo, onCardStatusChanged } = useFilteredCards();
+    const { done, todo, onCardStatusChanged } = useSortedCards();
 
     return <div className='columns-container'>
         <CardList

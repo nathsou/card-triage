@@ -16,7 +16,7 @@ const getStatusById = (cards: CardProps[]): StatusMap => {
     return statusMap;
 };
 
-export const useFilteredCards = () => {
+export const useSortedCards = () => {
     const { cards, status: cardsStatus } = useCards();
 
     const [todo, setTodo] = useState<CardProps[]>([]);
