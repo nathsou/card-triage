@@ -4,6 +4,12 @@
 
 ## Usage
 
+install dependencies
+
+```bash
+npm install
+```
+
 run the api server
 
 ```bash
@@ -13,7 +19,7 @@ npm run api
 start the development server
 
 ```bash
-npm install && npm start
+npm start
 ```
 
 run tests
