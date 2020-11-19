@@ -42,6 +42,8 @@ export const useSortedCards = () => {
         setCardsSorted(true);
     }
 
+    // for faster immutable data structure manipulations,
+    // we could use Immutable.js or similar libraries
     const onCardStatusChanged = useCallback((card: CardProps) => {
         if (card.status === 'DONE') { // The card was rejected
             // remove this card from the done cards
