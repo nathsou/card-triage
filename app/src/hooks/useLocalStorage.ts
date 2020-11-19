@@ -27,7 +27,7 @@ export const useLocalStorage = <T extends Serializable>(
     const updateValue = useCallback((newValue: T) => {
         localStorage.setItem(key, JSON.stringify(newValue));
         setValue(newValue);
-    }, [key]);
+    }, [key, setValue]);
 
     // follow the useState API
     return [value, updateValue];
