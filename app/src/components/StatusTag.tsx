@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { camelCasify } from '../Utils/StringUtils';
+import { camelCasify } from '../utils/StringUtils';
 import { Status } from "./Card";
 
 const statusColorMap: { [key in Status]: string } = {

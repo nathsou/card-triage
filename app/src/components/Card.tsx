@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import '../styles/card.css';
-import { formatDate } from '../Utils/StringUtils';
+import { formatDate } from '../utils/StringUtils';
 import { StatusTag } from './StatusTag';
 import { TagList } from './TagList';
 
